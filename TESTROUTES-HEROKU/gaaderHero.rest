@@ -1,0 +1,28 @@
+GET https://gaader-majao.herokuapp.com/gaader
+
+###
+
+GET https://gaader-majao.herokuapp.com/gaader/
+###
+
+POST https://gaader-majao.herokuapp.com/admin
+Content-Type: application/json
+
+{
+    "gaade": "No, you're not.",
+    "svar": "- Alex A."
+}
+
+###
+
+DELETE https://gaader-majao.herokuapp.com/gaader/admin/5ee201f90e44814790b0671e
+
+###
+
+PATCH https://gaader-majao.herokuapp.com/gaader/admin/5ee201f90e44814790b0671e
+Content-Type: application/json
+
+{
+    "gaade": "Hulk, Bruce Banner",
+    "svar": "Stan Lee"
+}

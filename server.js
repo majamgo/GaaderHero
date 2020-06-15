@@ -7,6 +7,9 @@ const MongoStore = require('connect-mongo')(session);
 
 const app = express();
 const PORT = process.env.PORT;
+const SESS_NAME = process.env.SESS_NAME;
+const SESS_SECRET = process.env.SESS_SECRET;
+const TWO_HOURS = 1000 * 60 * 60 * 2;
 
 
 // Mongoose og DB  -----------------------------------------------------------------------------
@@ -25,14 +28,6 @@ app.use(express.urlencoded({ extended: true }));
 
 
 // SESSION  ------------------------------------------------------------------------------------
-const TWO_HOURS = 1000 * 60 * 60 * 2
-
-const {
-    SESS_NAME = 'sid',
-    SESS_SECRET = 'ssh!quiet,it\'asecret!',
-    SESS_LIFETIME = TWO_HOURS
-} = process.env
-
 app.use(session({
     name: SESS_NAME,
     resave: false,
@@ -41,7 +36,7 @@ app.use(session({
     store: new MongoStore({ mongooseConnection: db }),
     secret: SESS_SECRET,
     cookie: {
-        maxAge: SESS_LIFETIME,
+        maxAge: TWO_HOURS,
         sameSite: true, // 'strict'
         secure: false
     }
