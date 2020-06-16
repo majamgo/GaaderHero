@@ -26,6 +26,8 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.set('trust proxy', 1);
+
 
 // SESSION  ------------------------------------------------------------------------------------
 app.use(session({
